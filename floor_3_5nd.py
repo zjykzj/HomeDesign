@@ -99,15 +99,6 @@ ax.add_patch(
 ax.text(4.25, 10, f"储物间\n面宽{2.5 - 3 * wall_thickness:.2f}m x 进深{4 - wall_thickness:.2f}m",
         ha='center', va='center', fontsize=10)
 
-# 阳台：位于最前面的区域
-draw_wall(0, 0, 8, 6.5 - wall_thickness)  # 排除底部墙壁（大门区域）
-ax.add_patch(
-    patches.Rectangle((wall_thickness, wall_thickness), 8 - 2 * wall_thickness, 6.5 - wall_thickness * 3,
-                      facecolor=colors['阳台'], edgecolor='black', label='阳台'))
-# 文字水平居中
-ax.text(4, 3.25, f"阳台\n面宽{8 - 2 * wall_thickness:.2f}m x 进深{6.5 - wall_thickness * 3:.2f}m",
-        ha='center', va='center', fontsize=10)
-
 # 楼梯平台：宽2.75米，长1.5米
 draw_wall(5 - wall_thickness, 6.5 - wall_thickness * 2, 3 + wall_thickness, 1.5 + wall_thickness * 2,
           exclude=['top', 'left'], adjacent=['top', 'left'])
@@ -124,6 +115,23 @@ ax.add_patch(patches.Rectangle((wall_thickness, 6.5 - wall_thickness), 5 - wall_
 # 文字水平居中
 ax.text(2.5, 7.25, f"走廊\n面宽{5 - wall_thickness :.2f}m x 进深1.5m",
         ha='center', va='center', fontsize=10, color='black')
+
+# 储物间（右下角）
+draw_wall(4 - wall_thickness, 0, 4 + wall_thickness, 6 + wall_thickness)  # 排除顶部墙壁
+ax.add_patch(
+    patches.Rectangle((4, wall_thickness), 4 - wall_thickness, 6 - wall_thickness,
+                      facecolor=colors['储物间'], edgecolor='black', linewidth=1.5))
+ax.text(6, 3.25, f"储物间\n面宽{4 - wall_thickness:.2f}m x 进深{6 - wall_thickness:.2f}m",
+        ha='center', va='center', fontsize=10, color='black', fontweight='bold')
+
+# 阳台：位于最前面的区域
+draw_wall(0, 0, 4, 6.5 - wall_thickness)  # 排除底部墙壁（大门区域）
+ax.add_patch(
+    patches.Rectangle((wall_thickness, wall_thickness), 4 - 2 * wall_thickness, 6.5 - wall_thickness * 3,
+                      facecolor=colors['阳台'], edgecolor='black', label='阳台'))
+# 文字水平居中
+ax.text(2, 3.25, f"阳台\n面宽{4 - 2 * wall_thickness:.2f}m x 进深{6.5 - wall_thickness * 3:.2f}m",
+        ha='center', va='center', fontsize=10)
 
 # 显示坐标轴标签
 plt.xlabel("面宽 (米)", fontsize=12, labelpad=10)
