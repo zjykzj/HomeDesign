@@ -82,7 +82,7 @@ ax.add_patch(
                       facecolor=colors['客厅'], edgecolor='black', label='客厅'))
 # 调整文字位置使其居中
 ax.text(4, (6.5 - 3 * wall_thickness) / 2 + wall_thickness,
-        f"客厅\n{8 - 2 * wall_thickness:.2f}m x {6.5 - 3 * wall_thickness:.2f}m",
+        f"客厅\n面宽{8 - 2 * wall_thickness:.2f}m x 进深{6.5 - 3 * wall_thickness:.2f}m",
         ha='center', va='center', fontsize=10)
 
 # 楼梯：位于右侧最里面的区域
@@ -92,7 +92,7 @@ ax.add_patch(
     patches.Rectangle((5.5 - wall_thickness, 8 - wall_thickness), 2.5, 4,
                       facecolor=colors['楼梯'], edgecolor='black', label='楼梯'))
 # 调整文字位置使其居中
-ax.text(5.5 + 2.5 / 2, 8 + 4 / 2, "楼梯\n2.5m x 4m", ha='center', va='center', fontsize=10)
+ax.text(5.5 + 2.5 / 2, 8 + 4 / 2, "楼梯\n面宽2.5m x 进深4m", ha='center', va='center', fontsize=10)
 
 # 厨房：重新定义颜色和文字描述
 draw_wall(0, 6.5 - 2 * wall_thickness, 5.5 - wall_thickness, 5.5 + 2 * wall_thickness)
@@ -100,20 +100,19 @@ ax.add_patch(
     patches.Rectangle((wall_thickness, 6.5 - wall_thickness), 5.5 - 3 * wall_thickness, 5.5,
                       facecolor=colors['厨房'], edgecolor='black', linewidth=1.5, label='厨房'))
 # 调整文字位置使其居中
-ax.text(5.5 / 2, 6.5 + 5.5 / 2, f"厨房\n{5.5 - 3 * wall_thickness:.2f}m x {5.5:.2f}m", ha='center', va='center',
+ax.text(5.5 / 2, 6.5 + 5.5 / 2, f"厨房\n面宽{5.5 - 3 * wall_thickness:.2f}m x 进深{5.5:.2f}m", ha='center', va='center',
         fontsize=10,
         fontweight='bold', linespacing=1.5)
 
 # 走廊：位于楼梯、卫生间和车库的前面
 # 修改为两部分：楼梯平台和其他走廊
-# 楼梯平台：宽3米，长1.5米
-draw_wall(5 - wall_thickness, 6.5 - wall_thickness * 2, 3 + wall_thickness, 1.5 + wall_thickness * 2,
+# 楼梯平台：宽2.75米，长1.5米
+draw_wall(5, 6.5 - wall_thickness * 2, 3, 1.5 + wall_thickness * 2,
           exclude=['top', 'left'], adjacent=['top', 'left'])
 ax.add_patch(
-    patches.Rectangle((5 - wall_thickness, 6.5 - wall_thickness), 3, 1.5,
+    patches.Rectangle((5, 6.5 - wall_thickness), 2.75, 1.5,
                       facecolor=colors['楼梯平台'], edgecolor='black', label='楼梯平台'))
-# 调整文字位置使其居中
-ax.text(5 + 3 / 2, 6.5 + 1.5 / 2, "楼梯平台\n3m x 1.5m", ha='center', va='center', fontsize=10)
+ax.text(6.5, 7.25, "楼梯平台\n面宽2.75m x 进深1.5m", ha='center', va='center', fontsize=10)
 
 # 绘制大门：位于正面右侧进入，使用双向大门表示
 door_x_start = 4 + (4 - 1.8) / 2  # 大门起始x坐标（右半侧中央）
