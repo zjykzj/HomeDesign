@@ -146,4 +146,5 @@ plt.xlabel("面宽 (米)", fontsize=12)
 plt.ylabel("进深 (米)", fontsize=12)
 
 # 显示图形
+plt.tight_layout()
 plt.show()

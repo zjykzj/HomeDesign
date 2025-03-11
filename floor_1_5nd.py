@@ -132,4 +132,5 @@ assert ax.get_xlim() == (0, 8), "面宽应为8米"
 assert ax.get_ylim() == (0, 12), "进深应为12米"
 
 # 显示图形
+plt.tight_layout()
 plt.show()
