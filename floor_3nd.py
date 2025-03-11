@@ -88,7 +88,7 @@ ax.text(2.75, 10, f"客厅\n面宽{5.5 - 3 * wall_thickness}m x 进深{4}m",
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 楼梯平台：宽3米，长1.5米
-draw_wall(5 - wall_thickness, 6.5 - wall_thickness * 2, 3 + wall_thickness, 1.5 + wall_thickness * 2,
+draw_wall(5 - 2 * wall_thickness, 6.5 - wall_thickness * 2, 3 + 2 * wall_thickness, 1.5 + wall_thickness * 2,
           exclude=['top', 'left'], adjacent=['top', 'left'])
 ax.add_patch(
     patches.Rectangle((5 - wall_thickness, 6.5 - wall_thickness), 3, 1.5,
@@ -96,9 +96,9 @@ ax.add_patch(
 ax.text(6.5, 7.25, "楼梯平台\n面宽3m x 进深1.5m", ha='center', va='center', fontsize=10, color='black')
 
 # 其他走廊：剩余部分
-ax.add_patch(patches.Rectangle((2 + wall_thickness, 6.5 - wall_thickness), 3, 1.5,
+ax.add_patch(patches.Rectangle((2 + wall_thickness, 6.5 - wall_thickness), 2.5, 1.5,
                                facecolor=colors['走廊'], edgecolor='black'))
-ax.text(3.5, 7.25, f"走廊\n面宽{3:.2f}m x 进深1.5m",
+ax.text(3.5, 7.25, f"走廊\n面宽{2.5}m x 进深1.5m",
         ha='center', va='center', fontsize=10, color='black')
 
 # 次卧：位于最前面的区域
@@ -106,15 +106,15 @@ draw_wall(0, 0, 4, 5, exclude=['right'])  # 排除顶部墙壁
 ax.add_patch(
     patches.Rectangle((wall_thickness, wall_thickness), 4 - 2 * wall_thickness, 5 - 2 * wall_thickness,
                       facecolor=colors['次卧'], edgecolor='black', label='客厅'))
-ax.text(2, 3.25, f"次卧\n面宽{4 - 2 * wall_thickness:.2f}m x 进深{5 - 2 * wall_thickness :.2f}m",
+ax.text(2, 2.25, f"次卧\n面宽{4 - 2 * wall_thickness:.2f}m x 进深{5 - 2 * wall_thickness :.2f}m",
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 客厅卫生间：位于次卧上方
-draw_wall(0, 5 - wall_thickness, 2 + wall_thickness, 4 + wall_thickness)
+draw_wall(0, 4 - wall_thickness, 2 + wall_thickness, 4 + wall_thickness)
 ax.add_patch(
-    patches.Rectangle((wall_thickness, 5), 2 - wall_thickness, 4 - wall_thickness,
+    patches.Rectangle((wall_thickness, 4), 2 - wall_thickness, 4 - wall_thickness,
                       facecolor=colors['卫生间'], edgecolor='black', linewidth=1.5))
-ax.text(1, 7, f"卫生间\n面宽{2 - wall_thickness:.2f}m x 进深{4 - wall_thickness}m",
+ax.text(1, 6, f"卫生间\n面宽{2 - wall_thickness:.2f}m x 进深{4 - wall_thickness}m",
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 主卧（右下角）
@@ -131,7 +131,7 @@ draw_wall(5, 4 - wall_thickness, 3, 2 + 2 * wall_thickness,
 ax.add_patch(
     patches.Rectangle((5 + wall_thickness, 4), 3 - 2 * wall_thickness, 2,
                       facecolor=colors['卫生间'], edgecolor='black', linewidth=1.5))
-ax.text(6.5, 5.5, f"卫生间\n{3 - 2 * wall_thickness:.2f}m x {2}m",
+ax.text(6.5, 5, f"卫生间\n{3 - 2 * wall_thickness:.2f}m x {2}m",
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 显示坐标轴标签
