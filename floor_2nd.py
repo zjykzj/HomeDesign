@@ -84,7 +84,7 @@ ax.text(6.75, 10, "楼梯\n面宽2.5m x 进深4m", ha='center', va='center', fon
 draw_wall(0, 8 - wall_thickness, 5.5 - wall_thickness, 4 + wall_thickness, exclude=['bottom'])  # 排除底部墙壁
 ax.add_patch(patches.Rectangle((wall_thickness, 8 - wall_thickness), 5.5 - 3 * wall_thickness, 4,
                                facecolor=colors['客厅'], edgecolor='black', linewidth=1.5))
-ax.text(2.75, 10, f"客厅\n面宽{5.5 - 3 * wall_thickness}m x 进深{4}m",
+ax.text(2.75, 10, f"客厅\n面宽{5.5 - 3 * wall_thickness}m x 进深{4 - wall_thickness}m",
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 楼梯平台：宽2.75米，长1.5米

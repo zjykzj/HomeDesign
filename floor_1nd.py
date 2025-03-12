@@ -79,7 +79,7 @@ draw_wall(0, 0, 8, 6.5 - wall_thickness)  # 排除底部墙壁（大门区域）
 ax.add_patch(
     patches.Rectangle((wall_thickness, wall_thickness), 8 - 2 * wall_thickness, 6.5 - wall_thickness * 2,
                       facecolor=colors['客厅'], edgecolor='black', label='客厅'))
-ax.text(4, 3.25, f"客厅\n面宽{8 - 2 * wall_thickness:.2f}m x 进深{6.5 - wall_thickness * 2:.2f}m",
+ax.text(4, 3.25, f"客厅\n面宽{8 - 2 * wall_thickness:.2f}m x 进深{6.5 - wall_thickness * 3:.2f}m",
         ha='center', va='center', fontsize=10)
 
 # 楼梯：位于右侧最里面的区域
