@@ -20,6 +20,10 @@ ax.set_xlim(0, 8)  # 面宽8米
 ax.set_ylim(0, 12)  # 进深12米
 ax.set_aspect('equal')  # 确保图形比例一致
 
+# 手动设置x轴和y轴的刻度间隔为1米
+ax.set_xticks(range(0, 9))  # x轴从0到8，每隔1米一个刻度
+ax.set_yticks(range(0, 13))  # y轴从0到12，每隔1米一个刻度
+
 # 添加标题和网格线
 plt.title("房屋一楼布局图", fontsize=16)  # 设置标题
 plt.grid(visible=True, which='both', linestyle='--', linewidth=0.5)  # 添加虚线网格
@@ -83,35 +87,26 @@ ax.text(4, 3.25, f"客厅\n面宽{8 - 2 * wall_thickness:.2f}m x 进深{6.5 - wa
         ha='center', va='center', fontsize=10)
 
 # 楼梯：位于右侧最里面的区域
-draw_wall(5.5 - wall_thickness, 8 - wall_thickness, 2.5 + wall_thickness, 4 + wall_thickness,
-          exclude=['left', 'bottom'], adjacent=['left', 'bottom'])
+draw_wall(5, 8 - wall_thickness, 2.5 + 2 * wall_thickness, 4 + wall_thickness,
+          exclude=['bottom'], adjacent=['bottom'])
 ax.add_patch(
-    patches.Rectangle((5.5 - wall_thickness, 8 - wall_thickness), 2.5, 4,
+    patches.Rectangle((5 + wall_thickness, 8 - wall_thickness), 2.5, 4,
                       facecolor=colors['楼梯'], edgecolor='black', label='楼梯'))
-ax.text(6.75, 10, "楼梯\n面宽2.5m x 进深4m", ha='center', va='center', fontsize=10)
-
-# 卫生间和储物间：水平分割
-# 储物间：位于前面
-draw_wall(3, 8, 2.5 - wall_thickness, 2, adjacent=['bottom'])
-ax.add_patch(
-    patches.Rectangle((3 + wall_thickness, 8), 2.5 - 3 * wall_thickness, 2 - wall_thickness,
-                      facecolor=colors['储物间'], edgecolor='black', label='储物间'))
-ax.text(4.25, 9, f"储物间\n面宽{2.5 - 3 * wall_thickness:.2f}m x 进深{2 - wall_thickness:.2f}m",
-        ha='center', va='center', fontsize=10)
-
-# 卫生间：位于后面
-draw_wall(3, 10, 2.5 - wall_thickness, 2, adjacent=['bottom'])
-ax.add_patch(
-    patches.Rectangle((3 + wall_thickness, 10), 2.5 - 3 * wall_thickness, 2 - wall_thickness,
-                      facecolor=colors['卫生间'], edgecolor='black', label='卫生间'))
-ax.text(4.25, 11, f"卫生间\n面宽{2.5 - 3 * wall_thickness:.2f}m x 进深{2 - wall_thickness:.2f}m",
-        ha='center', va='center', fontsize=10)
+ax.text(6.75, 10, f"楼梯\n面宽2.5m x 进深{4}m", ha='center', va='center', fontsize=10)
 
 # 车库：位于左侧最里面的区域
-draw_wall(0, 8, 3, 4, adjacent=['bottom', 'right'])
+draw_wall(0, 8 - wall_thickness, 3 + wall_thickness, 4 + wall_thickness, adjacent=[])
 ax.add_patch(patches.Rectangle((wall_thickness, 8), 3 - wall_thickness, 4 - wall_thickness,
                                facecolor=colors['车库'], edgecolor='black', label='车库'))
 ax.text(1.5, 10, f"车库\n面宽{3 - wall_thickness:.2f}m x 进深{4 - wall_thickness:.2f}m",
+        ha='center', va='center', fontsize=10)
+
+# 卫生间
+draw_wall(3, 9, 2.5 - wall_thickness, 3, adjacent=['left', 'right'])
+ax.add_patch(
+    patches.Rectangle((3 + wall_thickness, 9 + wall_thickness), 2.5 - 3 * wall_thickness, 3 - 2 * wall_thickness,
+                      facecolor=colors['卫生间'], edgecolor='black', label='卫生间'))
+ax.text(4.15, 10, f"卫生间\n面宽{2.5 - 3 * wall_thickness:.2f}m x 进深{3 - 2 * wall_thickness:.2f}m",
         ha='center', va='center', fontsize=10)
 
 # 走廊：位于楼梯、卫生间和车库的前面
@@ -126,7 +121,7 @@ ax.text(6.5, 7.25, "楼梯平台\n面宽2.75m x 进深1.5m", ha='center', va='ce
 
 # 其他走廊：剩余部分
 draw_wall(0, 6.5 - wall_thickness, 5 + wall_thickness, 1.5 + wall_thickness,
-          exclude=['right', 'bottom'], adjacent=['right', 'bottom'])
+          exclude=['top', 'right', 'bottom'], adjacent=['top', 'right', 'bottom'])
 ax.add_patch(patches.Rectangle((wall_thickness, 6.5 - wall_thickness), 5 - wall_thickness, 1.5,
                                facecolor=colors['走廊'], edgecolor='black'))
 ax.text(2.5, 7.25, f"走廊\n面宽{5 - wall_thickness :.2f}m x 进深1.5m",
