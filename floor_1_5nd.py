@@ -20,6 +20,10 @@ ax.set_xlim(0, 8)  # 面宽8米
 ax.set_ylim(0, 12)  # 进深12米
 ax.set_aspect('equal')  # 确保图形比例一致
 
+# 手动设置x轴和y轴的刻度间隔为1米
+ax.set_xticks(range(0, 9))  # x轴从0到8，每隔1米一个刻度
+ax.set_yticks(range(0, 13))  # y轴从0到12，每隔1米一个刻度
+
 # 添加标题和网格线
 plt.title("厨房布局图", fontsize=16)  # 设置标题
 plt.grid(visible=True, which='both', linestyle='--', linewidth=0.5)  # 添加虚线网格

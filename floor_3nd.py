@@ -20,6 +20,10 @@ ax.set_xlim(0, 8)  # 面宽8米
 ax.set_ylim(0, 12)  # 进深12米
 ax.set_aspect('equal')  # 确保比例一致
 
+# 手动设置x轴和y轴的刻度间隔为1米
+ax.set_xticks(range(0, 9))  # x轴从0到8，每隔1米一个刻度
+ax.set_yticks(range(0, 13))  # y轴从0到12，每隔1米一个刻度
+
 # 添加标题和网格
 plt.title("房屋三楼布局图", fontsize=16, fontweight='bold', pad=20)
 plt.grid(visible=True, which='both', linestyle='--', linewidth=0.5, alpha=0.7)
@@ -114,7 +118,7 @@ draw_wall(0, 4 - wall_thickness, 2 + wall_thickness, 4 + wall_thickness)
 ax.add_patch(
     patches.Rectangle((wall_thickness, 4), 2 - wall_thickness, 4 - wall_thickness,
                       facecolor=colors['卫生间'], edgecolor='black', linewidth=1.5))
-ax.text(1, 6, f"卫生间\n面宽{2 - wall_thickness:.2f}m x 进深{4 - wall_thickness}m",
+ax.text(1.13, 6, f"卫生间\n面宽{2 - wall_thickness:.2f}m x 进深{4 - wall_thickness}m",
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 主卧（右下角）
