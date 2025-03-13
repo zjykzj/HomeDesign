@@ -139,8 +139,8 @@ ax.text(6.5, 5, f"卫生间\n{3 - 2 * wall_thickness:.2f}m x {2}m",
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 显示坐标轴标签
-plt.xlabel("面宽 (米)", fontsize=12, labelpad=10)
-plt.ylabel("进深 (米)", fontsize=12, labelpad=10)
+plt.xlabel("南 面宽 (米)", fontsize=12, labelpad=10)
+plt.ylabel("西 进深 (米)", fontsize=12, labelpad=10)
 
 # 显示图形
 plt.tight_layout()

@@ -138,8 +138,8 @@ ax.text(2, 3.25, f"阳台\n面宽{4 - 2 * wall_thickness:.2f}m x 进深{6.5 - wa
         ha='center', va='center', fontsize=10)
 
 # 显示坐标轴标签
-plt.xlabel("面宽 (米)", fontsize=12, labelpad=10)
-plt.ylabel("进深 (米)", fontsize=12, labelpad=10)
+plt.xlabel("南 面宽 (米)", fontsize=12, labelpad=10)
+plt.ylabel("西 进深 (米)", fontsize=12, labelpad=10)
 
 # # 添加图例
 # handles, labels = [], []

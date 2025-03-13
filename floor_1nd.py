@@ -137,8 +137,8 @@ ax.plot([door_x_start, door_x_start + door_length], [door_y_bottom, door_y_botto
         color='black', linewidth=4, label='大门')
 
 # 显示坐标轴标签
-plt.xlabel("面宽 (米)", fontsize=12)
-plt.ylabel("进深 (米)", fontsize=12)
+plt.xlabel("南 面宽 (米)", fontsize=12)
+plt.ylabel("西 进深 (米)", fontsize=12)
 
 # 显示图形
 plt.tight_layout()
