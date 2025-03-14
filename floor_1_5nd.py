@@ -73,6 +73,14 @@ ax.add_patch(
 ax.text(4, (6.5 - 3 * wall_thickness) / 2 + wall_thickness,
         f"客厅\n面宽{8 - 2 * wall_thickness:.2f}m x 进深{6.5 - 3 * wall_thickness:.2f}m",
         ha='center', va='center', fontsize=10)
+# 添加一个半透明的矩形表示阴影
+shadow = patches.Rectangle((wall_thickness, wall_thickness), 8 - 2 * wall_thickness, 6.5 - 3 * wall_thickness,
+                           alpha=0.3, facecolor='gray', edgecolor='none', zorder=2)
+ax.add_patch(shadow)
+# 使用斜线填充来强调区域
+hatch_emphasis = patches.Rectangle((wall_thickness, wall_thickness), 8 - 2 * wall_thickness, 6.5 - 3 * wall_thickness,
+                                   facecolor='none', hatch='///', edgecolor='gray', linewidth=1, zorder=2)
+ax.add_patch(hatch_emphasis)
 
 # 楼梯：位于右侧最里面的区域
 draw_wall(5.5 - wall_thickness, 8 - wall_thickness, 2.5 + wall_thickness, 4 + wall_thickness,
