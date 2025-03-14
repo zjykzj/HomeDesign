@@ -10,6 +10,8 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 
+from globals import wall_thickness, colors, FLOOR_1_TITLE
+
 # 设置中文字体以支持中文标签显示
 plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False  # 解决负号显示问题
@@ -25,24 +27,8 @@ ax.set_xticks(range(0, 9))  # x轴从0到8，每隔1米一个刻度
 ax.set_yticks(range(0, 13))  # y轴从0到12，每隔1米一个刻度
 
 # 添加标题和网格线
-plt.title("房屋一楼布局图", fontsize=16)  # 设置标题
+plt.title(FLOOR_1_TITLE, fontsize=16)  # 设置标题
 plt.grid(visible=True, which='both', linestyle='--', linewidth=0.5)  # 添加虚线网格
-
-# 定义各功能区的颜色
-colors = {
-    '客厅': '#D3E4CD',  # 清新浅绿色
-    '主卧': '#F9E79F',  # 温暖柠檬黄
-    '次卧': '#ABEBC6',  # 舒适薄荷绿
-    '楼梯': '#FAD7A0',  # 柔和杏色
-    '卫生间': '#F4CCCC',  # 淡雅粉红
-    '储物间': '#D7BDE2',  # 淡紫罗兰
-    '车库': '#D3D3D3',  # 浅灰色
-    '走廊': '#EAECEE',  # 浅灰蓝
-    '楼梯平台': '#F5B041',  # 明亮橙色
-    '厨房': '#F9E79F',  # 柠檬黄（厨房）
-}
-# 墙壁厚度
-wall_thickness = 0.25
 
 
 # 绘制墙壁
