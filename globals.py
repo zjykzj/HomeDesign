@@ -7,6 +7,14 @@
 @Description: 
 """
 
+VERSION = "v1.1"
+
+FLOOR_1_TITLE = f"房屋一楼布局图 {VERSION}"
+FLOOR_1_5_TITLE = f"厨房布局图 {VERSION}"
+FLOOR_2_TITLE = f"房屋二楼布局图 {VERSION}"
+FLOOR_3_TITLE = f"房屋三楼布局图 {VERSION}"
+FLOOR_3_5_TITLE = f"房屋顶楼布局图 {VERSION}"
+
 # 定义各功能区的颜色
 colors = {
     '客厅': '#D3E4CD',  # 清新浅绿色
@@ -22,13 +30,37 @@ colors = {
     '阳台': '#D5E8D4',  # 浅薄荷绿（阳台）
 }
 
+import matplotlib.patches as patches
+
 # 墙壁厚度
 wall_thickness = 0.25
 
-VERSION = "v1.0"
 
-FLOOR_1_TITLE = f"房屋一楼布局图 {VERSION}"
-FLOOR_1_5_TITLE = f"厨房布局图 {VERSION}"
-FLOOR_2_TITLE = f"房屋二楼布局图 {VERSION}"
-FLOOR_3_TITLE = f"房屋三楼布局图 {VERSION}"
-FLOOR_3_5_TITLE = f"房屋顶楼布局图 {VERSION}"
+# 绘制墙壁
+def draw_wall(ax, x, y, width, height, exclude=None, adjacent=None):
+    """
+    绘制墙壁，排除或根据相邻区域避免重复绘制。
+
+    参数：
+    x, y: 功能区左下角坐标
+    width, height: 功能区宽度和高度
+    exclude: 排除的墙壁方向 ('left', 'right', 'top', 'bottom')
+    adjacent: 相邻区域信息，用于避免重复绘制墙壁
+    """
+    if exclude is None:
+        exclude = list()
+    if adjacent is None:
+        adjacent = list()
+    if not isinstance(exclude, list):
+        exclude = [exclude]
+
+    if ('left' not in exclude) and ('left' not in adjacent):
+        ax.add_patch(patches.Rectangle((x, y), wall_thickness, height, facecolor='gray', edgecolor='black'))
+    if ('right' not in exclude) and ('right' not in adjacent):
+        ax.add_patch(patches.Rectangle((x + width - wall_thickness, y), wall_thickness, height - wall_thickness,
+                                       facecolor='gray', edgecolor='black'))
+    if ('bottom' not in exclude) and ('bottom' not in adjacent):
+        ax.add_patch(patches.Rectangle((x, y), width, wall_thickness, facecolor='gray', edgecolor='black'))
+    if ('top' not in exclude) and ('top' not in adjacent):
+        ax.add_patch(patches.Rectangle((x, y + height - wall_thickness), width, wall_thickness, facecolor='gray',
+                                       edgecolor='black'))
