@@ -61,27 +61,37 @@ ax.text(4.15, 10, f"储物间\n面宽{2.5 - 3 * wall_thickness:.2f}m x 进深{4 
 
 # 楼梯平台：宽2.5米，长1.5米
 draw_wall(ax, 5, 6, 3, 1.5 + wall_thickness * 2,
-          exclude=['top', 'left'], adjacent=['top', 'left'])
+          exclude=['top', 'left', 'bottom'], adjacent=['top', 'left'])
 ax.add_patch(
     patches.Rectangle((5 + wall_thickness, 6 + wall_thickness), 3 - 2 * wall_thickness, 1.5,
                       facecolor=colors['楼梯平台'], edgecolor='black', label='楼梯平台'))
 ax.text(6.5, 7.25, f"楼梯平台\n面宽{3 - 2 * wall_thickness}m x 进深1.5m", ha='center', va='center', fontsize=10)
 
 # 走廊：剩余部分
-draw_wall(ax, 0, 6.5 - 2 * wall_thickness, 5 + wall_thickness, 1.5 + 2 * wall_thickness,
-          exclude=['right', ], adjacent=['right', ])
-ax.add_patch(patches.Rectangle((wall_thickness, 6.5 - wall_thickness), 5 - wall_thickness, 1.5,
+draw_wall(ax, 2 - wall_thickness, 6.5 - 2 * wall_thickness, 3 + 2 * wall_thickness, 1.5 + 2 * wall_thickness,
+          exclude=['right', 'bottom'], adjacent=['right', 'bottom'])
+ax.add_patch(patches.Rectangle((2, 6.5 - wall_thickness), 3, 1.5,
                                facecolor=colors['走廊'], edgecolor='black'))
 # 文字水平居中
-ax.text(2.5, 7.25, f"走廊\n面宽{5 - wall_thickness :.2f}m x 进深1.5m",
+ax.text(3.5, 7.25, f"走廊\n面宽{3}m x 进深1.5m",
         ha='center', va='center', fontsize=10, color='black')
 
-# 储物间（右下角）
-draw_wall(ax, 4 - wall_thickness, 0, 4 + wall_thickness, 6 + wall_thickness)  # 排除顶部墙壁
+# 客厅卫生间：位于次卧上方
+draw_wall(ax, 0, 6, 2, 2)
 ax.add_patch(
-    patches.Rectangle((4, wall_thickness), 4 - wall_thickness, 6 - wall_thickness,
+    patches.Rectangle((wall_thickness, 6 + wall_thickness), 2 - 2 * wall_thickness, 2 - 2 * wall_thickness,
+                      facecolor=colors['卫生间'], edgecolor='black', linewidth=1.5))
+ax.text(1, 7.25, f"卫生间\n面宽{1.5}m x 进深{1.5}m",
+        ha='center', va='center', fontsize=10, color='black', fontweight='bold')
+
+# 储物间（右下角）
+draw_wall(ax, 4 - wall_thickness, 4, 4 + wall_thickness, 2 + wall_thickness,
+          exclude=['top', 'left', 'bottom'], )  # 排除顶部墙壁
+draw_wall(ax, 4 - wall_thickness, 0, 4 + wall_thickness, 4 + wall_thickness)  # 排除顶部墙壁
+ax.add_patch(
+    patches.Rectangle((4, wall_thickness), 4 - wall_thickness, 4 - wall_thickness,
                       facecolor=colors['储物间'], edgecolor='black', linewidth=1.5))
-ax.text(6, 3.25, f"储物间\n面宽{4 - wall_thickness:.2f}m x 进深{6 - wall_thickness:.2f}m",
+ax.text(6, 3.25, f"储物间\n面宽{4 - wall_thickness:.2f}m x 进深{4 - wall_thickness:.2f}m",
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 阳台：位于最前面的区域

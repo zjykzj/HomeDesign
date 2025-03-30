@@ -71,11 +71,11 @@ ax.text(2, 2.25, f"次卧\n面宽{4 - 2 * wall_thickness:.2f}m x 进深{5 - 2 * 
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 客厅卫生间：位于次卧上方
-draw_wall(ax, 0, 4 - wall_thickness, 2 + wall_thickness, 4 + wall_thickness)
+draw_wall(ax, 0, 5 - wall_thickness, 2 + wall_thickness, 3 + wall_thickness)
 ax.add_patch(
-    patches.Rectangle((wall_thickness, 4), 2 - wall_thickness, 4 - wall_thickness,
+    patches.Rectangle((wall_thickness, 5), 2 - wall_thickness, 3 - wall_thickness,
                       facecolor=colors['卫生间'], edgecolor='black', linewidth=1.5))
-ax.text(1.13, 6, f"卫生间\n面宽{2 - wall_thickness:.2f}m x 进深{4 - wall_thickness}m",
+ax.text(1.13, 7.25, f"卫生间\n面宽{2 - wall_thickness:.2f}m x 进深{3 - wall_thickness}m",
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 主卧（右下角）
@@ -87,12 +87,11 @@ ax.text(6, 2.25, f"主卧\n面宽{4 - wall_thickness:.2f}m x 进深{6 - wall_thi
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 卫生间（主卧里面）
-draw_wall(ax, 5, 4 - wall_thickness, 3, 2 + 2 * wall_thickness,
-          exclude=['top', 'right'])  # 排除左侧墙壁
+draw_wall(ax, 5, 4, 3, 1.75 + 2 * wall_thickness, exclude=['top', 'right'])  # 排除左侧墙壁
 ax.add_patch(
-    patches.Rectangle((5 + wall_thickness, 4), 3 - 2 * wall_thickness, 2,
+    patches.Rectangle((5 + wall_thickness, 4 + wall_thickness), 3 - 2 * wall_thickness, 1.75,
                       facecolor=colors['卫生间'], edgecolor='black', linewidth=1.5))
-ax.text(6.5, 5, f"卫生间\n{3 - 2 * wall_thickness:.2f}m x {2}m",
+ax.text(6.5, 5.5, f"卫生间\n{3 - 2 * wall_thickness:.2f}m x {1.75}m",
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # 显示坐标轴标签
