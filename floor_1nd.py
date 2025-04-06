@@ -50,23 +50,38 @@ ax.add_patch(
                       facecolor=colors['楼梯'], edgecolor='black', label='楼梯'))
 ax.text(6.5, 10, f"楼梯\n面宽2.5m x 进深{4}m", ha='center', va='center', fontsize=10)
 
-# 车库：位于左侧最里面的区域
-draw_wall(ax, 0, 8 - wall_thickness, 3 + wall_thickness, 4 + wall_thickness, adjacent=[])
+# # 车库：位于左侧最里面的区域
+# draw_wall(ax, 0, 8 - wall_thickness, 5 + wall_thickness, 4 + wall_thickness, adjacent=[])
+# ax.add_patch(patches.Rectangle((wall_thickness, 8), 5 - wall_thickness, 4 - wall_thickness,
+#                                facecolor=colors['车库'], edgecolor='black', label='车库'))
+# ax.text(2.75, 10, f"车库\n面宽{3 - wall_thickness:.2f}m x 进深{4 - wall_thickness:.2f}m",
+#         ha='center', va='center', fontsize=10)
+
+
+# 调整文字位置使其居中
+ax.text(5.5 / 2, 9,
+        f"车库区域 = (车库1 + 车库2)\n中间的空白线用来对齐一楼和顶楼的墙壁\n整体面宽{5.5 - 3 * wall_thickness:.2f}m x 整体进深{3.75:.2f}m",
+        ha='center', va='center',
+        fontsize=14,
+        fontweight='bold', linespacing=1.5)
+
+# 车库1（左侧）
+draw_wall(ax, 0, 8 - wall_thickness, 3, 4 + wall_thickness, adjacent=['bottom', 'right'])
 ax.add_patch(patches.Rectangle((wall_thickness, 8), 3 - wall_thickness, 4 - wall_thickness,
                                facecolor=colors['车库'], edgecolor='black', label='车库'))
-ax.text(1.5, 10, f"车库\n面宽{3 - wall_thickness:.2f}m x 进深{4 - wall_thickness:.2f}m",
+# 文字水平居中
+ax.text(1.5, 10, f"车库1\n面宽{3 - wall_thickness:.2f}m x 进深{4 - wall_thickness:.2f}m",
         ha='center', va='center', fontsize=10)
 
-# 卫生间
-draw_wall(ax, 3, 9, 2.5 - wall_thickness, 3, adjacent=['left', 'right'])
+# 车库2（中间）
+draw_wall(ax, 3, 8 - wall_thickness, 2.5 - wall_thickness, 4 + wall_thickness, exclude=['left', 'right', 'bottom'])
 ax.add_patch(
-    patches.Rectangle((3 + wall_thickness, 9 + wall_thickness), 2.5 - 3 * wall_thickness, 3 - 2 * wall_thickness,
-                      facecolor=colors['卫生间'], edgecolor='black', label='卫生间'))
-ax.text(4.15, 10, f"卫生间\n面宽{2.5 - 3 * wall_thickness:.2f}m x 进深{3 - 2 * wall_thickness:.2f}m",
+    patches.Rectangle((3 + wall_thickness, 8), 2.5 - 3 * wall_thickness, 4 - wall_thickness,
+                      facecolor=colors['车库'], edgecolor='black', label='车库'))
+# 文字水平居中
+ax.text(4.15, 10, f"车库2\n面宽{2.5 - 3 * wall_thickness:.2f}m x 进深{4 - wall_thickness:.2f}m",
         ha='center', va='center', fontsize=10)
 
-# 走廊：位于楼梯、卫生间和车库的前面
-# 修改为两部分：楼梯平台和其他走廊
 # 楼梯平台：宽2.5米，长1.5米
 draw_wall(ax, 5, 6, 3, 1.5 + wall_thickness * 2,
           exclude=['top', 'left'], adjacent=['top', 'left'])
@@ -75,13 +90,22 @@ ax.add_patch(
                       facecolor=colors['楼梯平台'], edgecolor='black', label='楼梯平台'))
 ax.text(6.5, 7.25, f"楼梯平台\n面宽{3 - 2 * wall_thickness}m x 进深1.5m", ha='center', va='center', fontsize=10)
 
-# 其他走廊：剩余部分
-draw_wall(ax, 0, 6.5 - wall_thickness, 5 + wall_thickness, 1.5 + wall_thickness,
-          exclude=['top', 'right', 'bottom'], adjacent=['top', 'right', 'bottom'])
-ax.add_patch(patches.Rectangle((wall_thickness, 6.5 - wall_thickness), 5 - wall_thickness, 1.5,
+# 走廊：剩余部分
+draw_wall(ax, 2 - wall_thickness, 6.5 - 2 * wall_thickness, 3 + 2 * wall_thickness, 1.5 + 2 * wall_thickness,
+          exclude=['right', 'bottom'], adjacent=['right', 'bottom'])
+ax.add_patch(patches.Rectangle((2, 6.5 - wall_thickness), 3, 1.5,
                                facecolor=colors['走廊'], edgecolor='black'))
-ax.text(2.5, 7.25, f"走廊\n面宽{5 - wall_thickness :.2f}m x 进深1.5m",
-        ha='center', va='center', fontsize=10)
+# 文字水平居中
+ax.text(3.5, 7.25, f"走廊\n面宽{3}m x 进深1.5m",
+        ha='center', va='center', fontsize=10, color='black')
+
+# 客厅卫生间：位于次卧上方
+draw_wall(ax, 0, 6, 2, 2)
+ax.add_patch(
+    patches.Rectangle((wall_thickness, 6 + wall_thickness), 2 - 2 * wall_thickness, 2 - 2 * wall_thickness,
+                      facecolor=colors['卫生间'], edgecolor='black', linewidth=1.5))
+ax.text(1, 7.25, f"卫生间\n面宽{1.5}m x 进深{1.5}m",
+        ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # # 新增: 绘制大门
 # door_width = 1.8  # 大门宽度
