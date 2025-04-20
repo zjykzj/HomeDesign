@@ -57,7 +57,6 @@ ax.text(6.5, 10, f"楼梯\n面宽2.5m x 进深{4}m", ha='center', va='center', f
 # ax.text(2.75, 10, f"车库\n面宽{3 - wall_thickness:.2f}m x 进深{4 - wall_thickness:.2f}m",
 #         ha='center', va='center', fontsize=10)
 
-
 # 调整文字位置使其居中
 ax.text(5.5 / 2, 9,
         f"车库区域 = (车库1 + 车库2)\n中间的空白线用来对齐一楼和顶楼的墙壁\n整体面宽{5.5 - 3 * wall_thickness:.2f}m x 整体进深{3.75:.2f}m",
@@ -91,20 +90,20 @@ ax.add_patch(
 ax.text(6.5, 7.25, f"楼梯平台\n面宽{3 - 2 * wall_thickness}m x 进深1.5m", ha='center', va='center', fontsize=10)
 
 # 走廊：剩余部分
-draw_wall(ax, 2 - wall_thickness, 6.5 - 2 * wall_thickness, 3 + 2 * wall_thickness, 1.5 + 2 * wall_thickness,
+draw_wall(ax, 2, 6.5 - 2 * wall_thickness, 3 + wall_thickness, 1.5 + 2 * wall_thickness,
           exclude=['right', 'bottom'], adjacent=['right', 'bottom'])
-ax.add_patch(patches.Rectangle((2, 6.5 - wall_thickness), 3, 1.5,
+ax.add_patch(patches.Rectangle((2 + wall_thickness, 6.5 - wall_thickness), 3 - wall_thickness, 1.5,
                                facecolor=colors['走廊'], edgecolor='black'))
 # 文字水平居中
-ax.text(3.5, 7.25, f"走廊\n面宽{3}m x 进深1.5m",
+ax.text(3.5, 7.25, f"走廊\n面宽{3 - wall_thickness}m x 进深1.5m",
         ha='center', va='center', fontsize=10, color='black')
 
 # 客厅卫生间：位于次卧上方
-draw_wall(ax, 0, 6, 2, 2)
+draw_wall(ax, 0, 6, 2 + wall_thickness, 2)
 ax.add_patch(
-    patches.Rectangle((wall_thickness, 6 + wall_thickness), 2 - 2 * wall_thickness, 2 - 2 * wall_thickness,
+    patches.Rectangle((wall_thickness, 6 + wall_thickness), 2 - wall_thickness, 2 - 2 * wall_thickness,
                       facecolor=colors['卫生间'], edgecolor='black', linewidth=1.5))
-ax.text(1, 7.25, f"卫生间\n面宽{1.5}m x 进深{1.5}m",
+ax.text(1.15, 7.25, f"卫生间\n面宽{1.5 + wall_thickness}m x 进深{1.5}m",
         ha='center', va='center', fontsize=10, color='black', fontweight='bold')
 
 # # 新增: 绘制大门
