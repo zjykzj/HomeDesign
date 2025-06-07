@@ -40,9 +40,7 @@ ax.add_patch(
     patches.Rectangle((wall_thickness, wall_thickness), 8 - 2 * wall_thickness, 6.5 - 3 * wall_thickness,
                       facecolor=colors['客厅'], edgecolor='black', label='客厅'))
 # 调整文字位置使其居中
-ax.text(4, (6.5 - 3 * wall_thickness) / 2 + wall_thickness,
-        f"客厅\n面宽{8 - 2 * wall_thickness:.2f}m x 进深{6.5 - 3 * wall_thickness:.2f}m",
-        ha='center', va='center', fontsize=10)
+ax.text(4, 3.25, f"客厅", ha='center', va='center', fontsize=14)
 # 添加一个半透明的矩形表示阴影
 shadow = patches.Rectangle((wall_thickness, wall_thickness), 8 - 2 * wall_thickness, 6.5 - 3 * wall_thickness,
                            alpha=0.3, facecolor='gray', edgecolor='none', zorder=2)
@@ -57,41 +55,24 @@ draw_wall(ax, 5, 8 - wall_thickness, 2.5 + 2 * wall_thickness, 4 + wall_thicknes
           exclude=['bottom'])
 ax.add_patch(
     patches.Rectangle((5.5 - wall_thickness, 8 - wall_thickness), 2.5, 4,
-                      facecolor=colors['楼梯'], edgecolor='black', label='楼梯'))
+                      facecolor=colors['楼梯'], label='楼梯'))
 # 调整文字位置使其居中
-ax.text(6.5, 8 + 4 / 2, "楼梯\n面宽2.5m x 进深4m", ha='center', va='center', fontsize=10)
+ax.text(6.5, 8 + 4 / 2, "楼梯\n面宽2.5m", ha='center', va='center', fontsize=14)
 
-# 调整文字位置使其居中
-ax.text(5.5 / 2, 9,
-        f"厨房区域 = (厨房1 + 厨房2)\n中间的空白线用来对齐一楼和顶楼的墙壁\n整体面宽{5.5 - 3 * wall_thickness:.2f}m x 整体进深{5.5:.2f}m",
-        ha='center', va='center',
-        fontsize=14,
-        fontweight='bold', linespacing=1.5)
-
-# 厨房1（左侧）
-draw_wall(ax, 0, 6, 3, 6, adjacent=['bottom', 'right'])
-ax.add_patch(patches.Rectangle((wall_thickness, 6 + wall_thickness), 3 - wall_thickness, 6 - 2 * wall_thickness,
+# 厨房（左侧）
+draw_wall(ax, 0, 6, 5, 6, adjacent=['bottom', 'right'])
+ax.add_patch(patches.Rectangle((wall_thickness, 6 + wall_thickness), 5 - wall_thickness, 6 - 2 * wall_thickness,
                                facecolor=colors['厨房'], edgecolor='black', label='厨房'))
 # 文字水平居中
-ax.text(1.5, 10, f"厨房1\n面宽{3 - wall_thickness:.2f}m x 进深{6 - 2 * wall_thickness:.2f}m",
-        ha='center', va='center', fontsize=10)
-
-# 厨房2（中间）
-draw_wall(ax, 3, 6, 2.5 - wall_thickness, 6, exclude=['left', 'right', 'bottom'])
-ax.add_patch(
-    patches.Rectangle((3 + wall_thickness, 6 + wall_thickness), 2.5 - 3 * wall_thickness, 6 - 2 * wall_thickness,
-                      facecolor=colors['厨房'], edgecolor='black', label='厨房'))
-# 文字水平居中
-ax.text(4.15, 10, f"厨房2\n面宽{2.5 - 3 * wall_thickness:.2f}m x 进深{6 - 2 * wall_thickness:.2f}m",
-        ha='center', va='center', fontsize=10)
+ax.text(2.5, 9, f"厨房", ha='center', va='center', fontsize=14)
 
 # 楼梯平台：宽2.5米，长1.5米
 draw_wall(ax, 5, 6, 3, 1.5 + wall_thickness * 2,
           exclude=['top', 'left'], adjacent=['top', 'left'])
 ax.add_patch(
     patches.Rectangle((5 + wall_thickness, 6 + wall_thickness), 3 - 2 * wall_thickness, 1.5,
-                      facecolor=colors['楼梯平台'], edgecolor='black', label='楼梯平台'))
-ax.text(6.5, 7.25, f"楼梯平台\n面宽{3 - 2 * wall_thickness}m x 进深1.5m", ha='center', va='center', fontsize=10)
+                      facecolor=colors['楼梯平台'], label='楼梯平台'))
+ax.text(6.5, 7.25, f"楼梯平台", ha='center', va='center', fontsize=14)
 
 # 显示坐标轴标签
 plt.xlabel("南 面宽 (米)", fontsize=12)
