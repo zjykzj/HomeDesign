@@ -31,7 +31,7 @@ ax.set_yticks(range(0, 13))  # y轴从0到12，每隔1米一个刻度
 plt.title(FLOOR_1_TITLE, fontsize=16)  # 设置标题
 plt.grid(visible=True, which='both', linestyle='--', linewidth=0.5)  # 添加虚线网格
 
-# 绘制各个功能区
+# ------------------------------------- 绘制各个功能区并调整文字位置
 
 # 客厅：位于最前面的区域，右侧与楼梯平台之间有墙
 draw_wall(ax, 0, 0, 8, 6 + wall_thickness, exclude=['top'])  # 排除底部墙壁（大门区域）
@@ -75,18 +75,17 @@ draw_wall(ax, 3, 6.5 - 2 * wall_thickness, 1, 1.5 + 2 * wall_thickness,
 ax.add_patch(patches.Rectangle((3, 6.5 - wall_thickness), 1, 1.5,
                                facecolor=colors['走廊']))
 
-draw_wall(ax, 2 - wall_thickness, 6.5 - 2 * wall_thickness, 1 + wall_thickness, 1.5 + 2 * wall_thickness,
+draw_wall(ax, 2, 6.5 - 2 * wall_thickness, 1 + wall_thickness, 1.5 + 2 * wall_thickness,
           exclude=['left', 'right', 'bottom'])
-ax.add_patch(patches.Rectangle((2 - wall_thickness, 6.5 - wall_thickness), 1 + wall_thickness, 1.5,
+ax.add_patch(patches.Rectangle((2, 6.5 - wall_thickness), 1 + wall_thickness, 1.5,
                                facecolor=colors['走廊']))
 
-ax.text(3.25, 7.25, f"走廊", ha='center', va='center', fontsize=14)
+ax.text(3.5, 7.25, f"走廊", ha='center', va='center', fontsize=14)
 
 # 卫生间
-draw_wall(ax, 0, 6, 1.5 + wall_thickness, 2, exclude=['right'])
+draw_wall(ax, 0, 6, 1.5 + 2 * wall_thickness, 1.5 + 2 * wall_thickness, adjacent=['right'])
 ax.add_patch(
-    patches.Rectangle((wall_thickness, 6 + wall_thickness), 1.5 - wall_thickness, 2 - 2 * wall_thickness,
-                      facecolor=colors['卫生间']))
+    patches.Rectangle((wall_thickness, 6 + wall_thickness), 1.5, 1.5, facecolor=colors['卫生间']))
 ax.text(0.9, 7.25, f"卫生间\n面宽1.5m", ha='center', va='center', fontsize=14, )
 
 # 显示坐标轴标签

@@ -31,7 +31,7 @@ ax.set_yticks(range(0, 13))  # y轴从0到12，每隔1米一个刻度
 plt.title(FLOOR_1_5_TITLE, fontsize=16)  # 设置标题
 plt.grid(visible=True, which='both', linestyle='--', linewidth=0.5)  # 添加虚线网格
 
-# 绘制各个功能区
+# ------------------------------------- 绘制各个功能区并调整文字位置
 
 # 客厅：位于最前面的区域，右侧与楼梯平台之间有墙
 draw_wall(ax, 0, 0, 8, 6.5 - wall_thickness)  # 排除底部墙壁（大门区域）
