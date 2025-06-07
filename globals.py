@@ -7,7 +7,7 @@
 @Description: 
 """
 
-VERSION = "v1.4"
+VERSION = "v2.0"
 
 FLOOR_1_TITLE = f"房屋一楼布局图 {VERSION}"
 FLOOR_1_5_TITLE = f"厨房布局图 {VERSION}"
@@ -55,12 +55,11 @@ def draw_wall(ax, x, y, width, height, exclude=None, adjacent=None):
         exclude = [exclude]
 
     if ('left' not in exclude) and ('left' not in adjacent):
-        ax.add_patch(patches.Rectangle((x, y), wall_thickness, height, facecolor='gray', edgecolor='black'))
+        ax.add_patch(patches.Rectangle((x, y), wall_thickness, height, facecolor='gray'))
     if ('right' not in exclude) and ('right' not in adjacent):
         ax.add_patch(patches.Rectangle((x + width - wall_thickness, y), wall_thickness, height - wall_thickness,
-                                       facecolor='gray', edgecolor='black'))
+                                       facecolor='gray'))
     if ('bottom' not in exclude) and ('bottom' not in adjacent):
-        ax.add_patch(patches.Rectangle((x, y), width, wall_thickness, facecolor='gray', edgecolor='black'))
+        ax.add_patch(patches.Rectangle((x, y), width, wall_thickness, facecolor='gray'))
     if ('top' not in exclude) and ('top' not in adjacent):
-        ax.add_patch(patches.Rectangle((x, y + height - wall_thickness), width, wall_thickness, facecolor='gray',
-                                       edgecolor='black'))
+        ax.add_patch(patches.Rectangle((x, y + height - wall_thickness), width, wall_thickness, facecolor='gray'))
