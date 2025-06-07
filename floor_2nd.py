@@ -39,7 +39,7 @@ draw_wall(ax, 6.5 - wall_thickness, 8 - wall_thickness, 2.5 + wall_thickness, 4 
 ax.add_patch(
     patches.Rectangle((6.5 - wall_thickness, 8 - wall_thickness), 2.5, 4,
                       facecolor=colors['楼梯'], label='楼梯'))
-ax.text(7.5, 10, "楼梯\n面宽2.5m x 进深4m", ha='center', va='center', fontsize=14)
+ax.text(7.5, 10, "楼梯\n面宽2.5m", ha='center', va='center', fontsize=14)
 
 # 储物间（楼梯左侧）
 draw_wall(ax, 4, 8 - wall_thickness, 1.75 + 2 * wall_thickness, 3.75 + 2 * wall_thickness)  # 排除底部墙壁
@@ -81,7 +81,7 @@ ax.text(7, 2.25, f"主卧", ha='center', va='center', fontsize=14)
 # 卫生间（主卧里面）
 draw_wall(ax, 6.5, 4, 2 + 2 * wall_thickness, 1.75 + 2 * wall_thickness, exclude=['top', 'right'])  # 排除左侧墙壁
 ax.add_patch(patches.Rectangle((6.5 + wall_thickness, 4 + wall_thickness), 2, 1.75, facecolor=colors['卫生间']))
-ax.text(7.75, 5.25, f"卫生间\n2.0m x 1.75m", ha='center', va='center', fontsize=14)
+ax.text(7.75, 5.25, f"卫生间\n2.0m", ha='center', va='center', fontsize=14)
 
 # 显示坐标轴标签
 plt.xlabel("南 面宽 (米)", fontsize=12, labelpad=10)
