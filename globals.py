@@ -7,7 +7,7 @@
 @Description: 
 """
 
-VERSION = "v2.0"
+VERSION = "v2.1"
 
 FLOOR_1_TITLE = f"房屋一楼布局图 {VERSION}"
 FLOOR_1_5_TITLE = f"厨房布局图 {VERSION}"
