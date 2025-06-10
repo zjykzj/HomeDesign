@@ -41,15 +41,17 @@ ax.add_patch(
                       facecolor=colors['楼梯'], label='楼梯'))
 ax.text(7.5, 10, "楼梯\n面宽2.5m", ha='center', va='center', fontsize=14)
 
-# 储物间（楼梯左侧）
-draw_wall(ax, 4, 8 - wall_thickness, 1.75 + 2 * wall_thickness, 3.75 + 2 * wall_thickness)  # 排除底部墙壁
-ax.add_patch(patches.Rectangle((4 + wall_thickness, 8), 1.75, 3.75, facecolor=colors['储物间']))
-ax.text(5.15, 10, f"储物间", ha='center', va='center', fontsize=14)
-
 # 次卧（储物间旁边）
-draw_wall(ax, 0, 8 - wall_thickness, 3.75 + 2 * wall_thickness, 3.75 + 2 * wall_thickness, exclude=['right'])  # 排除底部墙壁
-ax.add_patch(patches.Rectangle((wall_thickness, 8), 3.75, 3.75, facecolor=colors['储物间']))
-ax.text(2, 10, f"储物间", ha='center', va='center', fontsize=14)
+draw_wall(ax, 0, 8 - wall_thickness, 2.75 + wall_thickness, 3.75 + 2 * wall_thickness, exclude=['right'])  # 排除底部墙壁
+ax.add_patch(patches.Rectangle((wall_thickness, 8), 2.75, 3.75, facecolor=colors['储物间']))
+
+draw_wall(ax, 3, 8 - wall_thickness, 1, 3.75 + 2 * wall_thickness, exclude=['left', 'right', 'bottom'])  # 排除底部墙壁
+ax.add_patch(patches.Rectangle((3, 8), 1, 3.75, facecolor=colors['储物间']))
+
+draw_wall(ax, 4, 8 - wall_thickness, 2 + wall_thickness, 3.75 + 2 * wall_thickness)  # 排除底部墙壁
+ax.add_patch(patches.Rectangle((4, 8), 2, 3.75, facecolor=colors['储物间']))
+
+ax.text(3, 10, f"储物间", ha='center', va='center', fontsize=14)
 
 # 楼梯平台：宽2.5米，长1.5米
 draw_wall(ax, 6, 6, 3, 1.5 + wall_thickness * 2, exclude=['top', 'left', 'bottom'])
@@ -73,8 +75,12 @@ ax.add_patch(patches.Rectangle((wall_thickness, 6 + wall_thickness), 2.5, 1.5, f
 ax.text(1.5, 7.25, f"卫生间\n面宽2.5m", ha='center', va='center', fontsize=14)
 
 # 储物间（右下角）
-draw_wall(ax, 5 - wall_thickness, 0, 3.75 + 2 * wall_thickness, 3.75 + 2 * wall_thickness)  # 排除顶部墙壁
-ax.add_patch(patches.Rectangle((5, wall_thickness), 3.75, 3.75, facecolor=colors['储物间']))
+draw_wall(ax, 5 - wall_thickness, 0, 1 + wall_thickness, 3.75 + wall_thickness, exclude=['top'])  # 排除顶部墙壁
+ax.add_patch(patches.Rectangle((5, wall_thickness), 1, 3.75, facecolor=colors['储物间']))
+
+draw_wall(ax, 6, 0, 2.75 + wall_thickness, 3.75 + 2 * wall_thickness, exclude=['left'])  # 排除顶部墙壁
+ax.add_patch(patches.Rectangle((6, wall_thickness), 2.75, 3.75, facecolor=colors['储物间']))
+
 ax.text(7, 2.25, f"储物间", ha='center', va='center', fontsize=14)
 
 draw_wall(ax, 6, 4, 2.5 + 2 * wall_thickness, 1.75 + 2 * wall_thickness, exclude=['top', 'bottom', 'left'])
