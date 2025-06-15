@@ -70,14 +70,14 @@ draw_wall(ax, 4, 6.5 - 2 * wall_thickness, 1, 1.5 + 2 * wall_thickness,
 ax.add_patch(patches.Rectangle((4, 6.5 - wall_thickness), 1, 1.5,
                                facecolor=colors['走廊']))
 
-draw_wall(ax, 3, 6.5 - 2 * wall_thickness, 1, 1.5 + 2 * wall_thickness,
+draw_wall(ax, 3.5, 6.5 - 2 * wall_thickness, 0.5, 1.5 + 2 * wall_thickness,
           exclude=['left', 'right'])
-ax.add_patch(patches.Rectangle((3, 6.5 - wall_thickness), 1, 1.5,
+ax.add_patch(patches.Rectangle((3.5, 6.5 - wall_thickness), 0.5, 1.5,
                                facecolor=colors['走廊']))
 
-draw_wall(ax, 2, 6.5 - 2 * wall_thickness, 1 + wall_thickness, 1.5 + 2 * wall_thickness,
+draw_wall(ax, 2, 6.5 - 2 * wall_thickness, 1.5 + wall_thickness, 1.5 + 2 * wall_thickness,
           exclude=['left', 'right', 'bottom'])
-ax.add_patch(patches.Rectangle((2, 6.5 - wall_thickness), 1 + wall_thickness, 1.5,
+ax.add_patch(patches.Rectangle((2, 6.5 - wall_thickness), 1.5 + wall_thickness, 1.5,
                                facecolor=colors['走廊']))
 
 ax.text(3.5, 7.25, f"走廊", ha='center', va='center', fontsize=14)
@@ -86,7 +86,7 @@ ax.text(3.5, 7.25, f"走廊", ha='center', va='center', fontsize=14)
 draw_wall(ax, 0, 6, 1.5 + 2 * wall_thickness, 1.5 + 2 * wall_thickness, adjacent=['right'])
 ax.add_patch(
     patches.Rectangle((wall_thickness, 6 + wall_thickness), 1.5, 1.5, facecolor=colors['卫生间']))
-ax.text(0.9, 7.25, f"卫生间\n面宽1.5m", ha='center', va='center', fontsize=14, )
+ax.text(0.9, 7.25, f"卫生间", ha='center', va='center', fontsize=14, )
 
 # 显示坐标轴标签
 plt.xlabel("南 面宽 (米)", fontsize=12)

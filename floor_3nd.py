@@ -70,9 +70,15 @@ ax.add_patch(patches.Rectangle((wall_thickness, wall_thickness), 4.5, 5.75, face
 ax.text(2.5, 3.5, f"客厅", ha='center', va='center', fontsize=14)
 
 # 客厅卫生间：位于次卧上方
-draw_wall(ax, 0, 6, 2.5 + 2 * wall_thickness, 1.5 + 2 * wall_thickness, adjacent=['right'])
-ax.add_patch(patches.Rectangle((wall_thickness, 6 + wall_thickness), 2.5, 1.5, facecolor=colors['卫生间']))
-ax.text(1.5, 7.25, f"卫生间\n面宽2.5m", ha='center', va='center', fontsize=14)
+draw_wall(ax, 0, 6, 1.5 + 2 * wall_thickness, 1.5 + 2 * wall_thickness, exclude=['right'])
+ax.add_patch(
+    patches.Rectangle((wall_thickness, 6 + wall_thickness), 1.5 + wall_thickness, 1.5, facecolor=colors['卫生间']))
+
+draw_wall(ax, 2, 6, 1, 1.5 + 2 * wall_thickness, exclude=['left', 'bottom'])
+ax.add_patch(
+    patches.Rectangle((2, 6 + wall_thickness), 1 - wall_thickness, 1.5, facecolor=colors['卫生间']))
+
+ax.text(1.5, 7.25, f"卫生间", ha='center', va='center', fontsize=14)
 
 # 主卧（右下角）
 draw_wall(ax, 5 - wall_thickness, 0, 3.75 + 2 * wall_thickness, 4.75 + wall_thickness, exclude=['top'])  # 排除顶部墙壁
@@ -87,7 +93,7 @@ ax.text(7, 2.25, f"主卧", ha='center', va='center', fontsize=14)
 # 卫生间（主卧里面）
 draw_wall(ax, 6.5, 4, 2 + 2 * wall_thickness, 1.75 + 2 * wall_thickness, exclude=['top'])  # 排除左侧墙壁
 ax.add_patch(patches.Rectangle((6.5 + wall_thickness, 4 + wall_thickness), 2, 1.75, facecolor=colors['卫生间']))
-ax.text(7.75, 5.25, f"卫生间\n面宽2.0m", ha='center', va='center', fontsize=14)
+ax.text(7.75, 5.25, f"卫生间", ha='center', va='center', fontsize=14)
 
 # 显示坐标轴标签
 plt.xlabel("南 面宽 (米)", fontsize=12, labelpad=10)
