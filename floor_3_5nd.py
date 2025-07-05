@@ -72,7 +72,7 @@ ax.text(2.5, 3.5, f"阳台", ha='center', va='center', fontsize=14)
 # 客厅卫生间
 draw_wall(ax, 0, 6, 2.5 + 2 * wall_thickness, 1.5 + 2 * wall_thickness, adjacent=['right'])
 ax.add_patch(patches.Rectangle((wall_thickness, 6 + wall_thickness), 2.5, 1.5, facecolor=colors['卫生间']))
-ax.text(1.5, 7.25, f"卫生间\n面宽2.5m", ha='center', va='center', fontsize=14)
+ax.text(1.5, 7.25, f"卫生间", ha='center', va='center', fontsize=14)
 
 # 储物间（右下角）
 draw_wall(ax, 5 - wall_thickness, 0, 1 + wall_thickness, 3.75 + wall_thickness, exclude=['top'])  # 排除顶部墙壁
